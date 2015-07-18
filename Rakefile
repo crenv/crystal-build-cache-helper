@@ -18,10 +18,11 @@ task :update do
 
     if `diff ../../../releases.json releases.json`.length > 0
       sh %[cp ../../../releases.json .]
-      sh %[git config user.name "Snap CI"]
+      sh %[git config user.name "Pine Mizune"]
+      sh %[git config user.email "pinemz@gmail.com"]
       sh %[git config push.default current]
       sh %[git add .]
-      sh %[git commit -m "Update releases.json"]
+      sh %[git commit -m "Update releases.json [Automatic]"]
       sh %[git pull]
       sh %[git push -f]
     end
