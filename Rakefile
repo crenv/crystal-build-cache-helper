@@ -11,20 +11,19 @@ end
 task :update do
   sh %[git clone git@github.com:pine613/crystal-build.git]
 
-  cd 'crystal-build' do
-    sh %[git checkout -b cache origin/cache]
-
+  cd 'crystal-build/share/crystal-build' do
     unless File.exists? 'releases.json'
       touch 'releases.json'
     end
 
-    if `diff ../releases.json releases.json`.length > 0
-      sh %[cp ../releases.json .]
+    if `diff ../../../releases.json releases.json`.length > 0
+      sh %[cp ../../../releases.json .]
       sh %[git config user.name "Snap CI"]
       sh %[git config push.default current]
       sh %[git add .]
       sh %[git commit -m "Update releases.json"]
-      sh %[git push]
+      sh %[git pull]
+      sh %[git push -f]
     end
   end
 end
