@@ -28,11 +28,14 @@ class CrystalBuildCache
   private
 
   def convert_assets(assets)
-    linux  = assets.find {|asset| asset[:name].include? 'linux'  }
+    linux_x86 = assets.find {|asset| /linux.*i686/ === asset[:name] }
+    linux_x64 = assets.find {|asset| /linux.*64/   === asset[:name] }
+
     darwin = assets.find {|asset| asset[:name].include? 'darwin' }
 
     results = Hash.new
-    results['linux-x64']  = linux[:browser_download_url]  if linux
+    results['linux-x86']  = linux_x86[:browser_download_url]  if linux_x86
+    results['linux-x64']  = linux_x64[:browser_download_url]  if linux_x64
     results['darwin-x64'] = darwin[:browser_download_url] if darwin
 
     results
