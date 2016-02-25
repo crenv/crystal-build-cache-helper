@@ -4,7 +4,7 @@
 require 'octokit'
 require 'json'
 
-REPO  = 'manastech/crystal'
+REPO  = 'crystal-lang/crystal'
 TOKEN = ENV['GITHUB_ACCESS_TOKEN']
 
 class CrystalBuildCache
