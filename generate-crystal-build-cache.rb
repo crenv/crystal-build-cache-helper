@@ -13,6 +13,7 @@ class CrystalBuildCache
 
     Octokit.configure do |c|
       c.access_token = token if token
+      c.auto_paginate = true
     end
   end
 
