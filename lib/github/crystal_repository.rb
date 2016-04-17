@@ -13,15 +13,9 @@ class CrystalRepository
   end
 
   def assets
-    print "Download Crystal releases ..."
-    STDOUT.flush
-
     releases = Octokit.releases(REPOSITORY).map { |release|
       [ release[:tag_name], convert_assets(release[:assets]) ]
     }.to_h
-
-    puts
-    releases
   end
 
   private

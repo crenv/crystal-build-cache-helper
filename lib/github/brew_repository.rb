@@ -16,18 +16,12 @@ class BrewRepository
   end
 
   def download
-    print "Downloading Homebrew Formulas "
-    STDOUT.flush
-
     commits = Octokit.commits(REPOSITORY, path: 'Formula/crystal-lang.rb')
 
     FileUtils.rm_rf(@save_path)
     FileUtils.mkdir_p(@save_path)
 
     commit = commits.each do |commit|
-      print '.'
-      STDOUT.flush
-
       options = {
         path: 'Formula/crystal-lang.rb',
         ref: commit.sha,
