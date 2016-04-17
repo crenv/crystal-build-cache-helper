@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     addressable (2.3.8)
+    deep_merge (1.0.1)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     multipart-post (2.0.0)
@@ -15,7 +16,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  deep_merge (~> 1.0, >= 1.0.1)
   octokit (= 4.0.1)
 
 BUNDLED WITH
-   1.10.5
+   1.10.6
