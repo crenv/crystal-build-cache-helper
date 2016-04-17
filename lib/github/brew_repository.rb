@@ -30,7 +30,5 @@ class BrewRepository
 			contents = Octokit.contents(REPOSITORY, options)
       File.write(File.join(@save_path, "#{commit.sha}.rb"), contents)
     end
-
-    puts
   end
 end
