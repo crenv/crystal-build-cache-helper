@@ -17,9 +17,13 @@ brew_repository.download
 formula_loader     = FormulaLoader.new('tmp/formula')
 crystal_repository = CrystalRepository.new(token: TOKEN)
 
-assets = {}
+assets_hash = {}
 
-assets.deep_merge! crystal_repository.assets
-assets.deep_merge! formula_loader.assets
+assets_hash.deep_merge! crystal_repository.assets
+assets_hash.deep_merge! formula_loader.assets
+
+assets = assets_hash.map do |key, value|
+  { tag_name: key, assets: value }
+end
 
 puts JSON.pretty_generate(assets)
