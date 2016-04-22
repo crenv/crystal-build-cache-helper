@@ -22,6 +22,8 @@ class BrewRepository
     FileUtils.mkdir_p(@save_path)
 
     commit = commits.each do |commit|
+      p commit
+
       options = {
         path: 'Formula/crystal-lang.rb',
         ref: commit.sha,
