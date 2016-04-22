@@ -8,16 +8,21 @@ class FormulaLoader
   def initialize(folder)
     @formulas = []
 
-    Dir.glob(File.join(folder, '*')) do |formula|
+    Dir.glob(File.join(folder, '*')).sort.each do |formula|
       load formula
 
       formula = nil
       Object.class_eval do
         klass      = const_get(:CrystalLang)
-        sha256     = klass.sha256
-        klass_name = "CrystalLang_#{sha256}"
+        version    = klass.version.gsub('.', '')
+        klass_name = "CrystalLang_v#{version}"
 
-        break if const_defined? klass_name
+        break if klass.bottle_urls.length.zero?
+
+        if const_defined? klass_name
+          remove_const(:CrystalLang)
+          break
+        end
 
         const_set(klass_name, klass.clone)
         remove_const(:CrystalLang)
