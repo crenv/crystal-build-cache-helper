@@ -24,11 +24,13 @@ class CrystalRepository
     linux_x86 = assets.find {|asset| /linux.*i\d86/ === asset[:name] }
     linux_x64 = assets.find {|asset| /linux.*64/    === asset[:name] }
     darwin    = assets.find {|asset| asset[:name].include? 'darwin'  }
+    freebsd   = assets.find {|asset| asset[:name].include? 'freebsd' }
 
     results = Hash.new
-    results['linux-x86']  = linux_x86[:browser_download_url]  if linux_x86
-    results['linux-x64']  = linux_x64[:browser_download_url]  if linux_x64
-    results['darwin-x64'] = darwin[:browser_download_url]     if darwin
+    results['linux-x86']   = linux_x86[:browser_download_url]  if linux_x86
+    results['linux-x64']   = linux_x64[:browser_download_url]  if linux_x64
+    results['darwin-x64']  = darwin[:browser_download_url]     if darwin
+    results['freebsd-x64'] = freebsd[:browser_download_url]    if freebsd
 
     results
   end
