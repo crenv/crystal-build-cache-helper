@@ -24,6 +24,13 @@ class Formula
     attr_rw :sha256
     attr_rw :head
 
+    def stable(&block)
+      instance_eval(&block) if block_given?
+    end
+
+    def patch
+    end
+
     def bottle(&block)
       @bottle ||= Bottle.new
       @bottle.instance_eval(&block) if block_given?
