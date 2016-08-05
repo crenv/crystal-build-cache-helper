@@ -20,6 +20,7 @@ class Formula
   class << self
     attr_rw :desc
     attr_rw :homepage
+    attr_rw :revision
     attr_rw :url
     attr_rw :sha256
     attr_rw :head
