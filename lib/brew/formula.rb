@@ -9,6 +9,7 @@ end
 
 class Bottle < Hash
   attr_rw :revision
+  attr_rw :rebuild
 
   def sha256(val)
     digest, tag = val.shift
