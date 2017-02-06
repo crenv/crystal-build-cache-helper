@@ -9,7 +9,7 @@ task :generate do
 end
 
 task :update do
-  sh %[git clone git@github.com:pine613/crystal-build.git]
+  sh %[git clone git@github.com:pine/crystal-build.git]
 
   cd 'crystal-build/share/crystal-build' do
     unless File.exists? 'releases.json'
