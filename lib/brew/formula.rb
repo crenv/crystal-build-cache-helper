@@ -1,6 +1,6 @@
 # coding: utf-8
 
-require_relative 'extend/module'
+require 'brew/extend/module'
 
 class BuildOptions
   def with?(val)

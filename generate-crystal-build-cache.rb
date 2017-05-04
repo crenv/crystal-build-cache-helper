@@ -1,13 +1,15 @@
 #!/usr/bin/env ruby
 # -*- encoding: utf-8 -*-
 
+$:.unshift(File.join(File.dirname(__FILE__), 'lib'))
+
 require 'octokit'
 require 'json'
 require 'deep_merge'
 
-require_relative './lib/brew/formula_loader'
-require_relative './lib/github/brew_repository'
-require_relative './lib/github/crystal_repository'
+require 'brew/formula_loader'
+require 'github/brew_repository'
+require 'github/crystal_repository'
 
 TOKEN = ENV['GITHUB_ACCESS_TOKEN']
 

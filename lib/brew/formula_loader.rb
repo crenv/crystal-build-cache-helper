@@ -1,6 +1,6 @@
 # coding: utf-8
 
-require_relative 'formula'
+require 'brew/formula'
 
 class FormulaLoader
   attr_reader :formulas
