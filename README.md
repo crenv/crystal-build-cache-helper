@@ -1,4 +1,3 @@
 # crystal-build-cache-helper
 
-[![Build Status](https://snap-ci.com/pine/crystal-build-cache-helper/branch/master/build_image)](https://snap-ci.com/pine/crystal-build-cache-helper/branch/master)
-
+[![Build Status](https://app.snap-ci.com/crenv/crystal-build-cache-helper/branch/master/build_image)](https://app.snap-ci.com/crenv/crystal-build-cache-helper/branch/master)
