@@ -18,7 +18,7 @@ class BrewRepository
   end
 
   def download
-    commits = Retryable.retryable do
+    commits = Retryable.retryable(:tries => 10) do
       Octokit.commits(REPOSITORY, {
         path: 'Formula/crystal-lang.rb',
         per_page: @per_page,
@@ -28,7 +28,7 @@ class BrewRepository
     loop do
       break if commits.size.zero?
 
-      c = Retryable.retryable do
+      c = Retryable.retryable(:tries => 10) do
         Octokit.commits(REPOSITORY, {
           path: 'Formula/crystal-lang.rb',
           per_page: @per_page,
