@@ -9,6 +9,7 @@ task :generate do
 end
 
 task :update do
+  FileUtils.rm_rf 'crystal-build'
   sh %[git clone git@github.com:pine/crystal-build.git]
 
   cd 'crystal-build/share/crystal-build' do
@@ -18,9 +19,6 @@ task :update do
 
     if `diff ../../../releases.json releases.json`.length > 0
       sh %[cp ../../../releases.json .]
-      sh %[git config user.name "Pine Mizune"]
-      sh %[git config user.email "pinemz@gmail.com"]
-      sh %[git config push.default current]
       sh %[git add .]
       sh %[git commit -m "Update releases.json [Automatic]"]
       sh %[git pull]
