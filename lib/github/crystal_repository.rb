@@ -14,7 +14,7 @@ class CrystalRepository
 
   def assets
     releases = Octokit.releases(REPOSITORY).map { |release|
-      [ release[:tag_name], convert_assets(release[:assets]) ]
+      [ release[:tag_name].sub(/^v/, ''), convert_assets(release[:assets]) ]
     }.to_h
   end
 
